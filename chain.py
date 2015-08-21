@@ -22,9 +22,12 @@ def generateText(words, size, length): #size specifies the number of words in ea
         start = choice(words.keys())
     text = start
     currentLength = sum([len(word) for word in text]) + (size-1)
-    while currentLength < length:
+    while True:
         current = text[-size:]
         selected = choice(words[current])
         text.append(selected)
-        currentLength = currentLength + len(selected) + 1 # +1 is to account for spaces later
+        if len(currentLength + selected)+1 <= length:
+            currentLength = currentLength + len(selected) + 1 # +1 is to account for spaces later
+        else:
+            break
     return " ".join(text)

@@ -1,10 +1,10 @@
 import praw
 import itertools
 
-PUNCT = ['!', '.', '?', ',', ';', ' ']
-FORMATTING = ['*', '**', '^', '~~', '\*', '`', '>', '[', ']', '---', '\.']
+PUNCT = ['!', '.', '?', ',', ';']
+FORMATTING = ['*', '**', '^', '~~', '\*', '`', '>', '[', ']', '---', '\.', '\n']
 
-def createSource(subreddit, numSubmissions): #submission = # of submissions to crawl for comments in subreddit
+def createRedditSource(subreddit, numSubmissions): #submission = # of submissions to crawl for comments in subreddit
     r = praw.Reddit(user_agent='Lore by d-soni')
     submissions = r.get_subreddit(subreddit).get_hot(limit=numSubmissions)
     commentsList = []
@@ -16,8 +16,7 @@ def createSource(subreddit, numSubmissions): #submission = # of submissions to c
     source = ""
     for text in commentTexts:
         for element in FORMATTING:
-            text = text.replace(element, '') #remove formatting characters
-        text = text.replace('\n', '') #remove newlines 
+            text = text.replace(element, '') #remove formatting characters and newlines
         ' '.join(text.split()) #ensure only 1 space is added while multiple \n may exist
         if text[-1:] not in PUNCT:
             text = text + "."  #if no punctuation, add period (may be incorrect, but most often correct)
