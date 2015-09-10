@@ -8,7 +8,7 @@ auth = tweepy.OAuthHandler(private.consumer_key, private.consumer_secret)
 auth.set_access_token(private.access_token, private.access_token_secret)
 api = tweepy.API(auth)
 
-def createTwiiterSource(search): #searches 500 tweets based on results from 'search'
+def createTwitterSource(search): #searches 500 tweets based on results from 'search'
     tweets = tweepy.Cursor(api.search, [q=search, lang='en']).items(500)
     source = ""
     for tweet in tweets:
@@ -19,7 +19,7 @@ def createTwiiterSource(search): #searches 500 tweets based on results from 'sea
             del source[index]
     return " ".join(source)
 
-def createTweets(source, num): #num is number of tweets to create
+def createTweets(source, num): #num is number of tweets to search
     words = createDict(source, 2) #state size of 2 allows for more combinations as tweets are small
     tweets = []
     alchemyAPI = AlchemyAPI()
