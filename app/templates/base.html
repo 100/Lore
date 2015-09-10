@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Lore</a>
+            </div>
+            <div>
+              <ul class="nav navbar-nav">
+                <li><a href="/texts">Texts</a></li>
+                <li><a href="/twitter">Twitter</a></li>
+                <li><a href="/reddit">Reddit</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        {% with msgs = get_flashed_messages() %}
+          {% if msgs %}
+             {%for msg in msgs %}
+               <div class="alert alert-danger">
+                 {{ msg }}
+               </div>
+             {% endfor %}
+           {% endif %}
+         {% endwith %}
+        {% block content %}} {% endblock %}
+    </body>
+</html>
