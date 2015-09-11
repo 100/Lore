@@ -17,14 +17,10 @@ class SelectSourceForm(Form):
 class HashTagForm(Form):
     hashtag = TextField("hashtag", [validators.required()])
 
-#IntegerField to get number of desired tweets to generate
-class NumTweetsForm(Form):
-    numTweets = IntegerField("characters", [validators.Required(), validators.NumberRange(min = 0)])
-
 #TextField to get subreddit for reddit source-creation
 class SubredditForm(Form):
     subreddit = Textfield("subreddit", [validators.required()])
 
-#IntegerField to get number of tweets to search through in source-creation
+#IntegerField to get number of tweets to create
 class NumberTweets(Form):
     numberTweets = IntegerField("numberTweets", [validators.required(), validators.NumberRange(min = 1)])
