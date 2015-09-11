@@ -19,7 +19,7 @@ def createTwitterSource(search): #searches 500 tweets based on results from 'sea
             del source[index]
     return " ".join(source)
 
-def createTweets(source, num): #num is number of tweets to search
+def createTweets(source, num): #num is number of tweets to create
     words = createDict(source, 2) #state size of 2 allows for more combinations as tweets are small
     tweets = []
     alchemyAPI = AlchemyAPI()
